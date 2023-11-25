@@ -38,6 +38,7 @@ const animalArray = [
 function App() {
   const [newDeal, setNewDeal] = useState([]);
   const [clickStart, setClickStart] = useState(false);
+  const [hiddenCards, setHiddenCards] = useState(animalArray.length);
 
   const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -51,6 +52,11 @@ function App() {
     setNewDeal(shuffle(animalArray));
     setClickStart(true);
   }
+
+  function nextGame() {
+    setNewDeal(shuffle(animalArray));
+    setClickStart(true);
+  }
   return (
     <div className="container mx-auto">
       <div className="grid justify-items-center">
@@ -60,7 +66,7 @@ function App() {
         {clickStart ? (
           <button
             className=" mb-4 w-52 rounded-full bg-yellow-600 px-4 py-2 text-white transition hover:bg-yellow-400 hover:text-cyan-950"
-            // onClick={nextGame}
+            onClick={nextGame}
           >
             Nowe rozdanie
           </button>
@@ -73,7 +79,11 @@ function App() {
           </button>
         )}
       </div>
-      <Board newDeal={newDeal} />
+      <Board
+        newDeal={newDeal}
+        hiddenCards={hiddenCards}
+        setHiddenCards={setHiddenCards}
+      />
     </div>
   );
 }

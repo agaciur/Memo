@@ -1,4 +1,4 @@
-export function Scoreborad() {
+export function Scoreborad({ score }) {
   return (
     <table className="container mx-auto table-auto text-center">
       <thead>
@@ -10,12 +10,12 @@ export function Scoreborad() {
       <tbody>
         <tr>
           <td>gracz 1</td>
-          <td>0</td>
+          <td>{score}</td>
         </tr>
-        <tr className="bg-yellow-50">
+        {/* <tr className="bg-yellow-50">
           <td>gracz 2</td>
           <td>0</td>
-        </tr>
+        </tr> */}
       </tbody>
     </table>
   );
